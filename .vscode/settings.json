@@ -1,0 +1,6 @@
+{
+    "dataworkspace.excludedProjects": [
+        "ProjetoTcc/localdb/localdb.sqlproj"
+    ],
+    "sqltools.connections": []
+}

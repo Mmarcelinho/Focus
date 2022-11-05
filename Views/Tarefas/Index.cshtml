@@ -1,0 +1,155 @@
+﻿@model IEnumerable<ProjetoTcc.Models.DatasViewModel>
+
+@{
+    ViewData["Title"] = "Tarefas Cadastradas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="watch">
+
+    <div class="time">
+        00:00:00
+    </div>
+
+    <div class="controls">
+
+        <button id="start"><b>INICIAR</b></button>
+        <button id="stop"><b>PARAR</b></button>
+        <button id="reset"><b>RESETAR</b></button>
+
+    </div>
+
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="accordion" id="painelTarefas">
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div class="row">
+
+                    <div class="col-10">
+
+                        <button class="btn btn-link btn-block text-left" style="text-decoration:none;color:black;"
+                        type="button" data-toggle="collapse" data-target="#@item.Identificadores">
+                            @item.Data
+                        </button>
+
+                    </div>
+
+                    <div class="col-2">
+                        <a asp-action="CriarTarefa" asp-route-dataTarefa="@item.Data"
+                        class="btn btn-sm btn-outline-dark">Nova Tarefa</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="@item.Identificadores" class="collapse show" data-parent="#painelTarefas">
+                <div class="card-body">
+                    @await Component.InvokeAsync("ListaTarefas", item.Data)
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
+<div class="modal" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Confirmação de Exclusão</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <p>Prosseguir com a exclusão da tarefa <text class="nomeTarefa"></text> ? </p>
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-outline-danger btnFechar" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-outline-success btnExcluir">Sim</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+
+<script>
+
+    function ConfirmarExclusao(tarefaId, nomeTarefa) {
+        $(".nomeTarefa").text(nomeTarefa);
+        $(".modal").modal();
+        $(".btnExcluir").on('click', function () {
+
+            $.ajax({
+                url: 'Tarefas/ExcluirTarefa',
+                method: 'POST',
+                data: { tarefaId: tarefaId },
+
+                success: function (data) {
+                    $(".modal").modal('hide');
+                    location.reload(true);
+                }
+
+            });
+        });
+
+        $('.btnFechar').on('click', function () {
+
+            tarefaId = null;
+            nomeTarefa = null;
+            $(".modal").modal('hide');
+
+        });
+
+    }
+
+    function ConfirmarConclusao(tarefaId) {
+
+
+        $("#btnExcluir").on('click', function () {
+
+            $.ajax({
+
+                url: 'Tarefas/ConcluirTarefa',
+                method: 'POST',
+                data: { tarefaId: tarefaId },
+
+                success: function (data) {
+
+                    location.reload(true);
+                }
+
+            });
+        });
+
+    }
+
+
+
+</script>
+}

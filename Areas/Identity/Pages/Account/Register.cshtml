@@ -1,0 +1,93 @@
+﻿@page
+@model RegisterModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Register.css">
+    <title>Cadastro</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="form-nome">
+            <p>Focus</p>
+        </div>
+
+        <div class="form">
+
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+                <div class="form-header">
+
+                    <div class="title">
+                        <h1>Cadastre-se</h1>
+                    </div>
+
+                    <div class="login-button">
+                        <button><a asp-page="./Login">Entrar</a></button>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <div class="input-box">
+                        <label asp-for="Input.UserName">Nome</label>
+                        <input asp-for="Input.UserName" class="form-control" />
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label asp-for="Input.Email">Email</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label asp-for="Input.Password">Senha</label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <label asp-for="Input.ConfirmPassword">Confirmar senha</label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="continue-button">
+
+                    <button type="submit">
+                        <p>Continuar</p>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

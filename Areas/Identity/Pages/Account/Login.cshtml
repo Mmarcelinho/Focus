@@ -1,0 +1,61 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Login.css">
+    <title>Cadastro</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="form-nome">
+            <p>Focus</p>
+        </div>
+        <div class="form">
+
+            <div class="form-header">
+                <div class="title">
+                    <h1>Login</h1>
+                </div>
+                <div class="cadastro-button">
+                    <button><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Não possui cadastro? Clique aqui</a></button>
+                </div>
+            </div>
+            <form id="account" method="post">
+                <div class="input-box">
+                    <label asp-for="Input.UserName">Nome</label>
+                    <input asp-for="Input.UserName" class="form-control" />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="input-box">
+                    <label asp-for="Input.Password">Senha</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="continue-button">
+                    <button type="submit"><p>Logar</p></button>
+                </div>
+            </form>
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

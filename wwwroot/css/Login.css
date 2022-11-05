@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+
+:root {
+    --dark: #000000;
+    --white: #ffffff;
+    --green: #82dc046e;
+    --red: #dc04046e;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container {
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    box-shadow: 5px 5px 36px rgba(0, 0, 0, .212);
+}
+
+.form-nome {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--dark);
+    padding: 1rem;
+}
+
+.form-nome p {
+    color: var(--white);
+    font-size: 8rem;
+    font-weight: 600;
+    writing-mode: vertical-rl;
+
+}
+
+
+
+.form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 3rem;
+}
+
+.form-header {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cadastro-button {
+    display: flex;
+    align-items: center;
+
+}
+
+.cadastro-button button {
+    border: none;
+    background-color: var(--dark);
+    border-radius: 2rem;
+    padding: 0.4rem 1rem;
+    margin-left: 3rem;
+    transition: all 0.5s;
+
+}
+
+.cadastro-button button:hover {
+    border: none;
+    background-color: var(--dark);
+    padding: 0.4rem 1rem;
+    transform: scale(0.9);
+}
+
+.cadastro-button button a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--white);
+
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: var(--dark);
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.input-box input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px var(--dark);
+
+}
+
+.input-box input:hover {
+    outline: 1px solid var(--red);
+}
+
+
+.input-box input:focus-visible {
+    outline: 1px solid var(--green);
+}
+
+
+.input-box label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.input-box input::placeholder {
+    color: var(--dark);
+}
+
+.continue-button button {
+    width: 100%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.continue-button button:hover {
+    background-color: var(--dark);
+    transform: scale(0.9);
+}
+
+.continue-button button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--white);
+}
+
+@media screen and (max-width:1330px) {
+    .form-nome {
+        display: none;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1064px) {
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+    .input-group {
+        flex-direction: column;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+        max-height: 10rem;
+        padding-right: 5rem;
+    }
+
+
+
+}
